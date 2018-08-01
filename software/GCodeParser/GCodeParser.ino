@@ -89,6 +89,9 @@ void setup()
 {
     //Do startup stuff here
     Serial.begin(115200);
+    while(!Serial); // wait
+    Serial.println("\nSerial OK.");
+
     if(Z_ENABLE_SERVO==1){
         servo.attach(Z_STEP_PIN);
     }

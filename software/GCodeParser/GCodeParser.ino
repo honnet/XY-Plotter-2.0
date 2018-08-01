@@ -33,6 +33,7 @@ int SENSORS_INVERTING = 1;
 * this uses the undocumented feature of Arduino - pins 14-19 correspond to analog 0-5
 ****************************************************************************************/
 
+/*
 int X_STEP_PIN = 8;
 int X_DIR_PIN = 11;
 int X_ENABLE_PIN = 4;
@@ -50,6 +51,28 @@ int Z_DIR_PIN = 9;
 int Z_ENABLE_PIN = 4;
 int Z_MIN_PIN = A1;
 int Z_MAX_PIN = A0;
+int Z_ENABLE_SERVO = 1;
+*/
+
+// NEW PIN ASSIGNMENT:
+int X_STEP_PIN = 10;
+int X_DIR_PIN = 11;
+int X_ENABLE_PIN = -1;
+int X_MIN_PIN = 17;
+int X_MAX_PIN = 16;
+
+int Y_STEP_PIN = 9;
+int Y_DIR_PIN = 3;
+int Y_ENABLE_PIN = -1;
+int Y_MIN_PIN = 12;
+int Y_MAX_PIN = 13;
+
+int Z_STEP_PIN = 15;
+int Z_DIR_PIN = -1;
+int Z_ENABLE_PIN = -1;
+int Z_MIN_PIN = -1;
+int Z_MAX_PIN = -1;
+
 int Z_ENABLE_SERVO = 1;
 #define COMMAND_SIZE 128
 

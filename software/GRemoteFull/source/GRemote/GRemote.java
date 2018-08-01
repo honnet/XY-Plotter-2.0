@@ -1592,7 +1592,7 @@ public void setup_setting_controls(int x, int y, int y_off) {
       if(osName.indexOf("Win")>-1){
          settingList = loadStrings("setting.ini");
       }else{
-          settingList = loadStrings("GRemote.app/Contents/setting.ini");
+          settingList = loadStrings("setting.ini");
       }
   try{
     

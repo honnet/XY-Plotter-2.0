@@ -64,7 +64,7 @@ void move_to_max(int limiter_pin, int stepper_pin, int stepper_dir_pin,int dir)
   // slowly back unitl pin is released
   while(!can_step(limiter_pin, limiter_pin, 0, 1, dir)){
     do_step(stepper_pin, stepper_dir_pin, 1);
-    delay(100);
+    delay(10);
   }
 }
 

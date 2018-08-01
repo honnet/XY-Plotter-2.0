@@ -13,8 +13,8 @@ float Z_STEPS_PER_MM   = 40;
 int Z_MOTOR_STEPS    = 100;
 
 //our maximum feedrates
-long FAST_XY_FEEDRATE = 2000;
-long FAST_Z_FEEDRATE = 2000;
+long FAST_XY_FEEDRATE = 20000;
+long FAST_Z_FEEDRATE = 20000;
 
 // Units in curve section
 #define CURVE_SECTION_INCHES 0.019685

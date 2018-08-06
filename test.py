@@ -3,6 +3,7 @@
 import glob
 import serial
 import platform
+import time
 
 DEBUG_PRINT = False
 
@@ -20,7 +21,6 @@ def main():
         go_to(d, d, port)
         go_to(d, 0, port)
         go_to(0, 0, port)
-
 
 ###############################################################################
 def serial_init():
@@ -53,8 +53,14 @@ def serial_init():
 ###############################################################################
 def go_to(x, y, port):
     command = "X" + str(x) + " Y" + str(y) + "\n"
+
+    start = time.time()
     port.write(command.encode(encoding="utf-8"))
-    if DEBUG_PRINT: print(command)
+    end = time.time()
+
+    if DEBUG_PRINT:
+        print(command)
+        print(end-start)
 
     # wait for acknowledgment
     line = port.readline()

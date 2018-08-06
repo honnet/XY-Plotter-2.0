@@ -4,6 +4,8 @@ import glob
 import serial
 import platform
 
+DEBUG_PRINT = False
+
 
 ###############################################################################
 # TODO: implement an interactive terminal with getch()?
@@ -52,7 +54,7 @@ def serial_init():
 def go_to(x, y, port):
     command = "G X" + str(x) + " Y" + str(y) + "\n"
     port.write(command.encode(encoding="utf-8"))
-    print(command)
+    if DEBUG_PRINT: print(command)
 
     # wait for acknowledgment
     line = port.readline()

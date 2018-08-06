@@ -52,7 +52,7 @@ def serial_init():
 
 ###############################################################################
 def go_to(x, y, port):
-    command = "G X" + str(x) + " Y" + str(y) + "\n"
+    command = "X" + str(x) + " Y" + str(y) + "\n"
     port.write(command.encode(encoding="utf-8"))
     if DEBUG_PRINT: print(command)
 

@@ -204,7 +204,7 @@ void do_step(byte pinA, byte pinB, byte dir)
                 digitalWrite(pinA, LOW);
                 break;
         }
-	delayMicroseconds(5);
+//      delayMicroseconds(5);
 }
 
 

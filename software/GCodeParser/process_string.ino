@@ -1,3 +1,5 @@
+#include <math.h>
+
 // our point structure to make things nice.
 struct LongPoint {
     long x;
@@ -305,12 +307,41 @@ void process_string(char instruction[], int size)
     }
     if (has_command('M', instruction, size))
     {
+        // Miscellaneous
         code = search_string('M', instruction, size);
         switch (code)
         {
             //TODO: this is a bug because search_string returns 0.  gotta fix that.
             case 0:
                 true;
+                break;
+
+            case 5: // 5INEWAVE! (in 1 dimension)
+                {   // Example: M5 L2 R100 S1
+                    int loops = search_string('L', instruction, size);
+                    int range = search_string('R', instruction, size);
+                    int steps = search_string('S', instruction, size);
+
+                    // Set default values:
+                    if (loops <= 0 || loops > 1000) loops = 2;   // number of round trips
+                    if (range <= 0 || range > 2000) range = 200; // size in motor steps
+                    if (steps <= 0 || steps > 45)   steps = 1;   // step in degrees
+
+                    const float deg2rad = M_PI / 180;
+
+                    for (int l = 0; l < loops; l++)
+                    {
+                        for (float d = 180; d < 180 + 360; d += steps)
+                        {
+                            float pos = cos(d * deg2rad);
+                            pos += 1;                            // to avoid negative values
+                            pos *= range/2;                      // because range(sine) = 2
+
+                            set_target(pos, 0, 0);
+                            dda_move(0);                         // no delay (max speed)
+                        }
+                    }
+                }
                 break;
 
             default:
